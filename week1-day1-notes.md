@@ -48,3 +48,5 @@
 - turn past practice into structured notes
 - write the first mini SOC case summary
 - identify knowledge gaps clearly
+
+- Day 1 completed. GitHub structure is ready. Initial SOC documentation has started.
