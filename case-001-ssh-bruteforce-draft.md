@@ -1,22 +1,22 @@
 # Case 001 - SSH Brute Force Draft
 
 ## Scenario
-This case is based on a controlled brute-force style lab performed in my practice environment.
+This case is based on a controlled SSH brute-force simulation performed in a lab environment.
 
 ## What Happened
-Repeated SSH login attempts were generated against a target system in the lab.
+Repeated login attempts were generated against a Linux system through SSH in order to observe how the activity appeared in Wazuh.
 
 ## What I Observed
-- Multiple login attempts were visible during the exercise.
-- Authentication-related logs were reviewed.
-- Repeated activity from the same source was part of the pattern.
-- A custom rule concept was also tested for repeated attempts.
+- Repeated authentication attempts were visible during the exercise.
+- The initial Wazuh view included a large amount of raw log data.
+- The main focus was on alerts rather than full raw-log interpretation.
+- A custom threshold-based rule concept was tested to trigger a high-severity alert after repeated attempts.
 
 ## Why It Matters
-This type of behavior may indicate a brute-force attempt against SSH services.
+Repeated SSH login attempts may indicate brute-force behavior and require investigation to determine whether access was gained.
 
 ## Initial Analyst Thought
-The first step is to verify whether the attempts were successful or failed, identify the source IP, review the targeted account, and determine whether the pattern meets alerting thresholds.
+The first step is to verify the source IP, review the targeted account, confirm whether the attempts failed or succeeded, and check whether the behavior matches brute-force thresholds.
 
-## What I Need to Improve
-I still need to improve my ability to review the logs independently and explain the findings with more confidence.
+## Current Limitation
+At this stage, I have observed the workflow in practice, but I still need to improve my understanding of rule logic, OSSEC structure, and independent log analysis.
