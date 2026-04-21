@@ -3,8 +3,9 @@
 This repository documents my hands-on transition into Security Operations.
 
 ## Focus Areas
-- Wazuh labs
-- Log analysis
+- SIEM fundamentals
+- Wazuh-based labs
+- Log analysis and alert triage
 - Authentication and SSH investigations
 - Incident notes and summaries
 - SOC-focused English writing practice
