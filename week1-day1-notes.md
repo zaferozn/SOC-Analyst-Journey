@@ -7,10 +7,18 @@
 - Start documenting observations
 
 ## Initial Notes
-- Wazuh environment is already installed
-- Transition to CLI-based analysis is in progress
+- GitHub repository was created for SOC portfolio development.
+- The main lab environment is currently based on Wazuh.
+- The next step is to review services, logs, and basic alert-related data from the CLI.
 
 ## To Review
 - Running services
 - Log file locations
-- Initial authentication-related events
+- Authentication-related events
+- Any warnings or errors in the environment
+
+## End-of-Day Deliverables
+- Repository structure completed
+- README updated
+- Initial Wazuh CLI review completed
+- First observations documented
