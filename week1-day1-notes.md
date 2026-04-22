@@ -50,3 +50,9 @@
 - identify knowledge gaps clearly
 
 - Day 1 completed. GitHub structure is ready. Initial SOC documentation has started.
+
+- ## Day 1 Reflection
+- GitHub structure was created for my SOC portfolio.
+- Initial documentation was started.
+- Previous Wazuh lab exposure was turned into written notes.
+- I identified gaps in log analysis, rule logic, and analyst-style writing.
