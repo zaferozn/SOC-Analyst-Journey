@@ -20,3 +20,18 @@ The first step is to verify the source IP, review the targeted account, confirm 
 
 ## Current Limitation
 At this stage, I have observed the workflow in practice, but I still need to improve my understanding of rule logic, OSSEC structure, and independent log analysis.
+
+## Workflow Reconstruction
+1. A Linux lab environment was accessed through SSH.
+2. Two terminal sessions were used during the exercise.
+3. One side was used to generate repeated login attempts in a controlled way.
+4. The other side was used to observe alerts and log-related output.
+5. The initial Wazuh output included raw data that was not yet fully clear to me.
+6. The main focus remained on alert visibility and repeated authentication activity.
+7. A custom threshold idea was used to generate a higher-severity alert after repeated attempts.
+
+## What the Exercise Taught Me
+- repeated failed login attempts can create visible alert patterns
+- alert visibility is easier to understand than full raw log output at the beginning
+- threshold-based logic can help identify repeated suspicious behavior
+- I still need deeper understanding of rule structure and raw log interpretation
