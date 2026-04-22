@@ -56,3 +56,16 @@
 - Initial documentation was started.
 - Previous Wazuh lab exposure was turned into written notes.
 - I identified gaps in log analysis, rule logic, and analyst-style writing.
+
+- ## Concepts I Practiced
+- SSH
+- failed login attempts
+- source IP
+- brute-force activity
+- alert monitoring
+- log review
+
+## Main Difficulties
+- explaining technical actions in English
+- understanding raw logs independently
+- separating alert logic from full log data
