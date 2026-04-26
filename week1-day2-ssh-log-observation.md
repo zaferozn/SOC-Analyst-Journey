@@ -11,7 +11,7 @@ journalctl | grep sshd | tail -n 20
 journalctl | grep "Accepted password" | tail -n 5
 journalctl | grep "Failed password" | tail -n 20
 journalctl | grep "Invalid user" | tail -n 20
-journalctl -f | grep sshd
+journalctl -f | grep sshd ```
 Command Understanding
 
 * ls /var/log lists the files and folders inside the /var/log directory.
@@ -50,10 +50,10 @@ Observed log entries included: Invalid user fakeuser from 192.168.64.1 port 5058
 pam_unix(sshd:auth): check pass; user unknown
 authentication failure
 Failed password for invalid user fakeuser from 192.168.64.1 port 50587 ssh2
-PAM 2 more authentication failures
+PAM 2 more authentication failures.
 Interpretation
 
-The source IP 192.168.64.1 represents the system initiating the SSH attempt. The port 50587 is a temporary source port used by the client side of the connection, not the SSH service port. The SSH service itself is typically listening on port 22.
+In this lab environment, the source IP 192.168.64.1 appeared as the system initiating the SSH attempt. The port 50587 is a temporary source port used by the client side of the connection, not the SSH service port. The SSH service itself is typically listening on port 22.
 
 Invalid user fakeuser means the username does not exist on the Linux system. Failed password and authentication failure show that the authentication attempt failed. The ssh2 value indicates SSH protocol version 2. The preauth stage refers to activity that happened before successful authentication.
 
