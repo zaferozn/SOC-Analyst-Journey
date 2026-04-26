@@ -11,7 +11,7 @@ journalctl | grep sshd | tail -n 20
 journalctl | grep "Accepted password" | tail -n 5
 journalctl | grep "Failed password" | tail -n 20
 journalctl | grep "Invalid user" | tail -n 20
-journalctl -f | grep sshd ```
+journalctl -f | grep sshd 
 
 Command Understanding
 
