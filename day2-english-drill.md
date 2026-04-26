@@ -15,3 +15,9 @@
 - I need to verify whether...
 - The next step is to...
 - This may require further investigation.
+
+- ## Analyst Writing Practice - Repeated Failed Login Pattern
+- The logs showed 26 failed SSH login attempts.
+- I observed 26 failed password events within the log output.
+- This may indicate brute-force activity.
+- The next step is to verify the source IP, targeted usernames, time window, and whether any login attempt was successful.
