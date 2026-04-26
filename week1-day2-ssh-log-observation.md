@@ -11,55 +11,53 @@ journalctl | grep sshd | tail -n 20
 journalctl | grep "Accepted password" | tail -n 5
 journalctl | grep "Failed password" | tail -n 20
 journalctl | grep "Invalid user" | tail -n 20
-journalctl -f | grep sshd 
+journalctl -f | grep sshd
+```
 
-Command Understanding
+## Command Understanding
+- `ls /var/log` lists the files and folders inside the `/var/log` directory.
+- `journalctl -n 20` shows the latest 20 system journal log entries.
+- `journalctl | grep sshd | tail -n 20` filters SSH service-related log entries and shows the latest 20 matching lines.
+- `grep` filters log output by a specific word or phrase.
+- `tail -n 20` shows the latest 20 matching lines.
+- The `|` symbol sends the output of one command into the next command.
+- `journalctl -f | grep sshd` follows live journal logs and shows new SSH-related entries as they appear.
 
-* ls /var/log lists the files and folders inside the /var/log directory.
-* journalctl -n 20 shows the latest 20 system journal log entries.
-* journalctl | grep sshd | tail -n 20 filters SSH service-related log entries and shows the latest 20 matching lines.
-* grep filters log output by a specific word or phrase.
-* tail -n 20 shows the latest 20 matching lines.
-* The | symbol sends the output of one command into the next command.
-* journalctl -f | grep sshd follows live journal logs and shows new SSH-related entries as they appear.
+## Successful SSH Login Observation
+- `Accepted password for analyst` indicated a successful SSH login for the `analyst` user.
+- This showed that the SSH authentication process succeeded for a valid local user.
 
-Successful SSH Login Observation
+## Failed SSH Login Observation
+- `Failed password for invalid user fakeuser` indicated a failed SSH login attempt using a username that does not exist on the system.
+- `Invalid user` means the attempted username is not a valid local user.
+- `Failed password` means the password authentication attempt failed.
+- `Connection closed` showed that the SSH connection was closed after the attempt.
 
-* Accepted password for analyst indicated a successful SSH login for the analyst user.
-* This showed that the SSH authentication process succeeded for a valid local user.
-
-Failed SSH Login Observation
-
-* Failed password for invalid user fakeuser indicated a failed SSH login attempt using a username that does not exist on the system.
-* Invalid user means the attempted username is not a valid local user.
-* Failed password means the password authentication attempt failed.
-* Connection closed showed that the SSH connection was closed after the attempt.
-
-Initial Analyst Interpretation
-
+## Initial Analyst Interpretation
 A single failed login attempt may occur during normal activity. However, repeated failed login attempts, especially against invalid users or from the same source IP, may indicate brute-force activity and require further investigation.
 
-Current Understanding
-
+## Current Understanding
 I can distinguish between a successful SSH login event and a failed SSH login attempt in the logs. I also understand that brute-force analysis depends on repeated patterns, not only a single failed event.
 
-Mac-to-Linux Failed SSH Attempt
-
+## Mac-to-Linux Failed SSH Attempt
 I generated a failed SSH login attempt from my Mac terminal against the Linux VM using an invalid username.
 
-Observed log entries included: Invalid user fakeuser from 192.168.64.1 port 50587
+Observed log entries included:
+
+```text
+Invalid user fakeuser from 192.168.64.1 port 50587
 pam_unix(sshd:auth): check pass; user unknown
 authentication failure
 Failed password for invalid user fakeuser from 192.168.64.1 port 50587 ssh2
-PAM 2 more authentication failures.
-Interpretation
+PAM 2 more authentication failures
+```
 
-In this lab environment, the source IP 192.168.64.1 appeared as the system initiating the SSH attempt. The port 50587 is a temporary source port used by the client side of the connection, not the SSH service port. The SSH service itself is typically listening on port 22.
+## Interpretation
+In this lab environment, the source IP `192.168.64.1` appeared as the system initiating the SSH attempt. The port `50587` is a temporary source port used by the client side of the connection, not the SSH service port. The SSH service itself is typically listening on port 22.
 
-Invalid user fakeuser means the username does not exist on the Linux system. Failed password and authentication failure show that the authentication attempt failed. The ssh2 value indicates SSH protocol version 2. The preauth stage refers to activity that happened before successful authentication.
+`Invalid user fakeuser` means the username does not exist on the Linux system. `Failed password` and `authentication failure` show that the authentication attempt failed. The `ssh2` value indicates SSH protocol version 2. The `preauth` stage refers to activity that happened before successful authentication.
 
 This event is a failed SSH login attempt using an invalid user. A single event is not enough to confirm brute-force activity, but repeated failed attempts from the same source IP may indicate a brute-force pattern.
 
-Key Takeaway
-
+## Key Takeaway
 Successful SSH login events, failed login attempts, invalid user attempts, and repeated failed attempts must be interpreted separately. A single failed attempt is not enough to confirm an attack, but repeated failed attempts from the same source IP can become suspicious.
