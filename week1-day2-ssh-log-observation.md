@@ -12,6 +12,7 @@ journalctl | grep "Accepted password" | tail -n 5
 journalctl | grep "Failed password" | tail -n 20
 journalctl | grep "Invalid user" | tail -n 20
 journalctl -f | grep sshd ```
+
 Command Understanding
 
 * ls /var/log lists the files and folders inside the /var/log directory.
