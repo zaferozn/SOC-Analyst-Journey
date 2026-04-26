@@ -103,7 +103,3 @@ This means the counts are based on matching log lines, not necessarily unique se
 The logs showed multiple failed SSH login attempts from the same source IP within a short time window. The attempts targeted invalid usernames such as `fakeuser` and `kort`.
 
 This can be interpreted as a repeated failed login pattern. A single failed attempt is not enough to confirm brute-force activity, but repeated failed attempts from the same source IP may indicate brute-force behavior and require further investigation.
-
-The logs showed multiple failed SSH login attempts from the same source IP within a short time window. The attempts targeted invalid usernames such as fakeuser and kort.
-
-This can be interpreted as a repeated failed login pattern. A single failed attempt is not enough to confirm brute-force activity, but repeated failed attempts from the same source IP may indicate brute-force behavior and require further investigation.
