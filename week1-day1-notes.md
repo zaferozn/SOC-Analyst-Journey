@@ -1,71 +1,53 @@
 # Week 1 - Day 1 Notes
 
 ## Objectives
-- Set up GitHub repository
-- Organize SOC study structure
-- Review Wazuh environment from CLI
-- Start documenting observations
+- Set up a GitHub repository for SOC portfolio development.
+- Organize the SOC study structure.
+- Review the existing Wazuh lab environment.
+- Start documenting hands-on observations.
 
 ## Initial Notes
 - GitHub repository was created for SOC portfolio development.
-- The main lab environment is currently based on Wazuh.
-- The next step is to review services, logs, and basic alert-related data from the CLI.
+- The main lab environment is currently based on Wazuh running in a Linux environment through UTM.
+- The next step is to review services, logs, and alert-related data from the CLI.
 
-## To Review
-- Running services
-- Log file locations
-- Authentication-related events
-- Any warnings or errors in the environment
-
-## End-of-Day Deliverables
-- Repository structure completed
-- README updated
-- Initial Wazuh CLI review completed
-- First observations documented
-
-- ## Previous Hands-On Exposure
+## Previous Hands-On Exposure
 - I installed and ran Wazuh in a Linux environment through UTM.
-- I connected to the system through SSH.
+- I connected to the Linux system through SSH.
 - I practiced a brute-force style lab in a controlled environment.
 - I observed logs during the attack simulation.
-- I also worked with a custom rule idea based on repeated attempts.
+- I also tested a custom rule idea based on repeated login attempts.
 
 ## What I Currently Know
-- Basic SSH connection usage
-- whoami command
-- checking IP information with ip a
-- basic awareness of authentication logs
-- basic awareness of brute-force patterns
+- Basic SSH connection usage.
+- Basic Linux identity and network commands such as `whoami` and `ip a`.
+- Basic awareness of authentication logs.
+- Basic awareness of failed login attempts.
+- Basic awareness of brute-force patterns.
 
 ## What I Still Need to Understand Better
-- how to independently trace logs step by step
-- how Wazuh rules are structured
-- how alerts are generated from raw logs
-- how to explain findings like an analyst
-- how to reproduce the workflow without guidance
+- How to independently trace logs step by step.
+- How Wazuh rules are structured.
+- How alerts are generated from raw logs.
+- How to explain findings like an analyst.
+- How to reproduce the workflow without guidance.
 
-## Today’s Focus
-- turn past practice into structured notes
-- write the first mini SOC case summary
-- identify knowledge gaps clearly
-
-- Day 1 completed. GitHub structure is ready. Initial SOC documentation has started.
-
-- ## Day 1 Reflection
-- GitHub structure was created for my SOC portfolio.
-- Initial documentation was started.
-- Previous Wazuh lab exposure was turned into written notes.
-- I identified gaps in log analysis, rule logic, and analyst-style writing.
-
-- ## Concepts I Practiced
+## Concepts I Practiced
 - SSH
-- failed login attempts
-- source IP
-- brute-force activity
-- alert monitoring
-- log review
+- Failed login attempts
+- Source IP
+- Brute-force activity
+- Alert monitoring
+- Log review
 
 ## Main Difficulties
-- explaining technical actions in English
-- understanding raw logs independently
-- separating alert logic from full log data
+- Explaining technical actions in English.
+- Understanding raw logs independently.
+- Separating alert logic from full raw log data.
+- Understanding the relationship between raw logs, rules, and alerts.
+
+## Day 1 Reflection
+GitHub structure was created for my SOC portfolio. Initial documentation was started, and previous Wazuh lab exposure was turned into structured notes. I identified gaps in log analysis, Wazuh rule logic, and analyst-style writing.
+
+## End-of-Day Status
+Day 1 completed. GitHub structure is ready, and initial SOC documentation has started.
