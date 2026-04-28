@@ -265,3 +265,4 @@ Trust but verify.
 Never assume.
 
 Observe, verify, document, escalate.
+```text
