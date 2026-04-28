@@ -51,3 +51,5 @@ The lab will continue with a simplified single-VM setup for Linux authentication
 
 ## Key Takeaway
 Before analyzing SIEM alerts, it is necessary to validate the environment. In this case, Wazuh alert analysis cannot continue on the current VM until Wazuh Manager is installed, restored, or located on another VM.
+## Current Learning Note
+These commands were used for basic environment validation. I am still building deeper command-line fluency through repeated practice.
