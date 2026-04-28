@@ -310,11 +310,21 @@ When investigating a system attack, a SOC analyst should ask:
 
 Analyst Summary
 
-Systems are valuable targets because they store data, provide services, and control access to important environments. Attackers may target systems through human-led actions, software vulnerabilities, misconfigurations, or supply chain compromise. A system compromise can lead to credential theft, data theft, ransomware, lateral movement, extortion, operational disruption, or defacement. As a SOC analyst, I should identify which system was targeted, why it matters, what access it provides, whether the attack was successful, and what evidence supports escalation.
+Systems are valuable targets because they store data, provide services, and control access to important environments.
+
+Attackers may target systems through human-led actions, software vulnerabilities, misconfigurations, or supply chain compromise.
+
+A system compromise can lead to credential theft, data theft, ransomware, lateral movement, extortion, operational disruption, or defacement.
+
+As a SOC analyst, I should identify which system was targeted, why it matters, what access it provides, whether the attack was successful, and what evidence supports escalation.
 
 Interview Answer
 
-System attacks often begin with initial access. This access can come from user actions, software vulnerabilities, weak configurations, exposed services, or compromised supply chain components. As a SOC Analyst, I would identify the affected system, understand why it is valuable, review relevant logs and alerts, check for vulnerabilities or misconfigurations, collect evidence, and escalate to IT or security engineering for patching, mitigation, or incident response.
+System attacks often begin with initial access.
+
+This access can come from user actions, software vulnerabilities, weak configurations, exposed services, or compromised supply chain components.
+
+As a SOC Analyst, I would identify the affected system, understand why it is valuable, review relevant logs and alerts, check for vulnerabilities or misconfigurations, collect evidence, and escalate to IT or security engineering for patching, mitigation, or incident response.
 
 Core Memory Lines
 
