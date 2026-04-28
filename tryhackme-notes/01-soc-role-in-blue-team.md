@@ -21,7 +21,7 @@ A simple SOC workflow can be described as:
 ```text
 Detect → Investigate → Document → Escalate
 As a Junior SOC Analyst, my role is to perform initial alert triage, review logs, collect evidence, document findings, and escalate suspicious or critical cases according to the SOC playbook.
-```
+
 SOC Pillars
 
 A mature SOC is built on three pillars:
