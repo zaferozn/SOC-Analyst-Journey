@@ -53,3 +53,38 @@ The lab will continue with a simplified single-VM setup for Linux authentication
 Before analyzing SIEM alerts, it is necessary to validate the environment. In this case, Wazuh alert analysis cannot continue on the current VM until Wazuh Manager is installed, restored, or located on another VM.
 ## Current Learning Note
 These commands were used for basic environment validation. I am still building deeper command-line fluency through repeated practice.
+## Time Window Filtering Practice
+
+I used `journalctl --since` to filter SSH authentication events within a specific time window.
+
+Commands used:
+
+```bash
+journalctl --since "2 hours ago" | grep -i "failed password" | wc -l
+journalctl --since "2 hours ago" | grep -i "failed password" | tail -n 10
+journalctl --since "2 hours ago" | grep -i "invalid user" | wc -l
+```
+
+Observed results:
+
+* Failed password entries: 6
+* Invalid user matching lines: 6
+* Source IP: 192.168.64.1
+* Usernames observed: Fakeuser, fakeuser
+* Source ports: 53939, 53940
+* Time window: Apr 28 08:22:44 - Apr 28 08:23:25 UTC
+* Approximate duration: 41 seconds
+
+Example log entries:
+Apr 28 08:22:44 soclab sshd[5411]: Failed password for invalid user Fakeuser from 192.168.64.1 port 53939 ssh2
+Apr 28 08:22:48 soclab sshd[5411]: Failed password for invalid user Fakeuser from 192.168.64.1 port 53939 ssh2
+Apr 28 08:22:54 soclab sshd[5411]: Failed password for invalid user Fakeuser from 192.168.64.1 port 53939 ssh2
+Apr 28 08:23:16 soclab sshd[5413]: Failed password for invalid user fakeuser from 192.168.64.1 port 53940 ssh2
+Apr 28 08:23:21 soclab sshd[5413]: Failed password for invalid user fakeuser from 192.168.64.1 port 53940 ssh2
+Apr 28 08:23:25 soclab sshd[5413]: Failed password for invalid user fakeuser from 192.168.64.1 port 53940 ssh2
+
+Analyst Interpretation
+
+The logs showed 6 failed SSH login attempts from the same source IP within approximately 41 seconds. The attempts targeted invalid usernames such as Fakeuser and fakeuser.
+
+This can be interpreted as a repeated failed login pattern. The activity may indicate brute-force behavior and should be reviewed further by checking the source IP, targeted usernames, time window, and whether any login attempt was successful.
