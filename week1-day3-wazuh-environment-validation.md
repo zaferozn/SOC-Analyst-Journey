@@ -99,3 +99,26 @@ This can be interpreted as a repeated failed login pattern. The activity may ind
 - time window
 - number of failed attempts
 - whether any login attempt was successful
+## Source IP and Username Extraction
+
+I practiced extracting source IP addresses and targeted usernames from failed SSH login logs.
+
+Commands used:
+
+```bash
+journalctl --since "2 hours ago" | grep -i "failed password" | grep -oE 'from [0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | sort | uniq -c
+journalctl --since "2 hours ago" | grep -i "failed password" | grep -oE 'invalid user [^ ]+' | sort | uniq -c
+```
+Observed results:
+
+* Source IP: 192.168.64.1 appeared in 6 failed SSH login attempts.
+* Fakeuser appeared in 3 failed SSH login attempts.
+* fakeuser appeared in 3 failed SSH login attempts.
+
+Extraction Interpretation
+
+Within the selected 2-hour time window, 6 failed SSH login attempts were observed from the same source IP, 192.168.64.1.
+
+The attempts targeted invalid username variations such as Fakeuser and fakeuser. Since Linux usernames are case-sensitive, these may be interpreted as separate username attempts.
+
+This pattern may indicate brute-force or username-guessing activity. Further investigation would require checking whether any login attempt was successful and whether the same source IP appears in other authentication events.
