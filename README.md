@@ -24,8 +24,11 @@ This repository documents my hands-on transition into Security Operations.
 - [Day 2 English Drill](english-drills/day2-english-drill.md)
 - [Day 3 English Drill](english-drills/day3-english-drill.md)
 
+## TryHackMe Notes
+- [TryHackMe Notes](tryhackme-notes/)
+
 ## Current Lab Status
 The current lab uses an Ubuntu Linux VM as an SSH target system. The current phase focuses on Linux authentication log analysis. Wazuh integration is planned as a later extension.
 
 ## Current Status
-Week 1 foundation is in progress. Case 001 is being developed from SSH failed login pattern analysis.
+Week 1 foundation is in progress. Case 001 has been developed from SSH failed login pattern analysis using Linux journal logs.
