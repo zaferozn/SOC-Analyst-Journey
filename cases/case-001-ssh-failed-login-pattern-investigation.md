@@ -1,37 +1,80 @@
-# Case 001 - SSH Brute Force Draft
+# Case 001 - SSH Failed Login Pattern Investigation
 
-## Scenario
-This case is based on a controlled SSH brute-force simulation performed in a lab environment.
+## Objective
+This case documents a simulated SSH failed-login investigation in a home SOC lab environment using Linux journal logs.
 
-## What Happened
-Repeated login attempts were generated against a Linux system through SSH in order to observe how the activity appeared in Wazuh.
+## Lab Environment
+- Hostname: `soclab`
+- Target System: Ubuntu Linux VM
+- VM IP Address: `192.168.64.7`
+- Log Source: Linux journal logs / SSH authentication events
+- Service: SSH
+- Analyst Focus: Authentication log review, failed login pattern analysis, source IP extraction, username extraction, and incident documentation
 
-## What I Observed
-- Repeated authentication attempts were visible during the exercise.
-- The initial Wazuh view included a large amount of raw log data.
-- The main focus was on alerts rather than full raw-log interpretation.
-- A custom threshold-based rule concept was tested to trigger a high-severity alert after repeated attempts.
+## Important Note
+Wazuh Manager was not installed on the current VM during this phase. This case focuses on Linux authentication log analysis before SIEM alert analysis.
 
-## Why It Matters
-Repeated SSH login attempts may indicate brute-force behavior and require investigation to determine whether access was gained.
+## Commands Used
+```bash
+journalctl --since "2 hours ago" | grep -i "failed password" | wc -l
+journalctl --since "2 hours ago" | grep -i "failed password" | tail -n 10
+journalctl --since "2 hours ago" | grep -i "invalid user" | wc -l
+journalctl --since "2 hours ago" | grep -i "failed password" | grep -oE 'from [0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | sort | uniq -c
+journalctl --since "2 hours ago" | grep -i "failed password" | grep -oE 'invalid user [^ ]+' | sort | uniq -c
+```
 
-## Initial Analyst Thought
-The first step is to verify the source IP, review the targeted account, confirm whether the attempts failed or succeeded, and check whether the behavior matches brute-force thresholds.
+## Observed Pattern
+- `6` failed SSH login attempts were observed.
+- The attempts came from source IP `192.168.64.1`.
+- The attempts targeted invalid usernames such as `Fakeuser` and `fakeuser`.
+- The activity occurred within approximately `41 seconds`.
+- The source ports observed were `53939` and `53940`.
 
-## Current Limitation
-At this stage, I have observed the workflow in practice, but I still need to improve my understanding of rule logic, OSSEC structure, and independent log analysis.
+## Example Log Entries
+```text
+Apr 28 08:22:44 soclab sshd[5411]: Failed password for invalid user Fakeuser from 192.168.64.1 port 53939 ssh2
+Apr 28 08:22:48 soclab sshd[5411]: Failed password for invalid user Fakeuser from 192.168.64.1 port 53939 ssh2
+Apr 28 08:22:54 soclab sshd[5411]: Failed password for invalid user Fakeuser from 192.168.64.1 port 53939 ssh2
+Apr 28 08:23:16 soclab sshd[5413]: Failed password for invalid user fakeuser from 192.168.64.1 port 53940 ssh2
+Apr 28 08:23:21 soclab sshd[5413]: Failed password for invalid user fakeuser from 192.168.64.1 port 53940 ssh2
+Apr 28 08:23:25 soclab sshd[5413]: Failed password for invalid user fakeuser from 192.168.64.1 port 53940 ssh2
+```
 
-## Workflow Reconstruction
-1. A Linux lab environment was accessed through SSH.
-2. Two terminal sessions were used during the exercise.
-3. One side was used to generate repeated login attempts in a controlled way.
-4. The other side was used to observe alerts and log-related output.
-5. The initial Wazuh output included raw data that was not yet fully clear to me.
-6. The main focus remained on alert visibility and repeated authentication activity.
-7. A custom threshold idea was used to generate a higher-severity alert after repeated attempts.
+## Analysis
+The logs showed repeated failed SSH login attempts from the same source IP within a short time window. The attempts targeted invalid usernames such as `Fakeuser` and `fakeuser`.
 
-## What the Exercise Taught Me
-- repeated failed login attempts can create visible alert patterns
-- alert visibility is easier to understand than full raw log output at the beginning
-- threshold-based logic can help identify repeated suspicious behavior
-- I still need deeper understanding of rule structure and raw log interpretation
+This pattern may indicate brute-force or username-guessing activity. Since the usernames were invalid, the activity may also represent attempts to discover valid usernames on the target system.
+
+## Analyst Actions
+- Reviewed failed SSH login events in Linux journal logs.
+- Filtered events by time window using `journalctl --since`.
+- Counted failed password entries using `wc -l`.
+- Extracted the source IP from failed login logs.
+- Extracted targeted invalid usernames.
+- Reviewed whether the pattern may indicate brute-force or username-guessing activity.
+
+## Recommended Next Steps
+- Verify whether any SSH login attempt was successful.
+- Check whether the source IP appears in other authentication events.
+- Review whether the targeted usernames exist on the system.
+- If unauthorized access is confirmed, escalate the incident for further investigation.
+
+## MITRE ATT&CK Mapping
+- Tactic: Credential Access
+- Technique: Brute Force
+- Technique ID: T1110
+
+## Incident Summary
+Within the selected time window, `6` failed SSH login attempts were observed from the same source IP, `192.168.64.1`. The attempts targeted invalid usernames such as `Fakeuser` and `fakeuser`. This pattern may indicate brute-force or username-guessing activity. The next step is to verify whether any login attempt was successful.
+
+## Key SOC Concepts
+- SSH
+- Failed login
+- Invalid user
+- Source IP
+- Source port
+- Time window
+- Brute-force activity
+- Username guessing
+- Authentication logs
+- Incident summary
