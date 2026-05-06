@@ -59,6 +59,7 @@ Observed results:
 The failed events were identified using the `Failed password` filter. The successful events were identified using the `Accepted password` filter.
 
 The failed login attempts targeted the invalid username `fakeuser`. The successful SSH logins should be reviewed separately to determine whether they were expected and authorized.
+
 ## Analyst Actions
 - Reviewed failed SSH login events in Linux journal logs.
 - Filtered events by time window using `journalctl --since`.
@@ -79,7 +80,9 @@ The failed login attempts targeted the invalid username `fakeuser`. The successf
 - Technique ID: T1110
 
 ## Incident Summary
-Within the selected time window, `6` failed SSH login attempts were observed from the same source IP, `192.168.64.1`. The attempts targeted invalid usernames such as `Fakeuser` and `fakeuser`. This pattern may indicate brute-force or username-guessing activity. The next step is to verify whether any login attempt was successful.
+Within the selected time window, `6` failed SSH login attempts were observed from the same source IP, `192.168.64.1`. The attempts targeted invalid usernames such as `Fakeuser` and `fakeuser`. This pattern may indicate brute-force or username-guessing activity.
+
+A separate successful login check was also performed by filtering for `Accepted password` events. In a later short time window, `3` failed SSH login attempts and `2` successful SSH logins were observed. The successful SSH logins should be reviewed separately to determine whether they were expected and authorized.
 
 ## Key SOC Concepts
 - SSH
