@@ -66,10 +66,11 @@ The failed login attempts targeted the invalid username `fakeuser`. The successf
 - Counted failed password entries using `wc -l`.
 - Extracted the source IP from failed login logs.
 - Extracted targeted invalid usernames.
+- Checked for successful SSH logins using the `Accepted password` filter.
 - Reviewed whether the pattern may indicate brute-force or username-guessing activity.
 
 ## Recommended Next Steps
-- Verify whether any SSH login attempt was successful.
+- Verify whether the observed successful SSH logins were expected and authorized.
 - Check whether the source IP appears in other authentication events.
 - Review whether the targeted usernames exist on the system.
 - If unauthorized access is confirmed, escalate the incident for further investigation.
