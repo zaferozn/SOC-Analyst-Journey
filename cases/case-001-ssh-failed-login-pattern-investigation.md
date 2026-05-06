@@ -45,6 +45,20 @@ The logs showed repeated failed SSH login attempts from the same source IP withi
 
 This pattern may indicate brute-force or username-guessing activity. Since the usernames were invalid, the activity may also represent attempts to discover valid usernames on the target system.
 
+## Successful Login Check
+
+I checked failed and successful SSH authentication events within the same short time window.
+
+Observed results:
+
+- Time window: `May 06 18:39 - 18:41`
+- Failed SSH login attempts: `3`
+- Successful SSH logins: `2`
+- Invalid username used for failed attempts: `fakeuser`
+
+The failed events were identified using the `Failed password` filter. The successful events were identified using the `Accepted password` filter.
+
+The failed login attempts targeted the invalid username `fakeuser`. The successful SSH logins should be reviewed separately to determine whether they were expected and authorized.
 ## Analyst Actions
 - Reviewed failed SSH login events in Linux journal logs.
 - Filtered events by time window using `journalctl --since`.
