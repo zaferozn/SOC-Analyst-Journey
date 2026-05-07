@@ -1,4 +1,9 @@
 # Case 001 - SSH Failed Login Pattern Investigation
+## Executive Summary
+
+This case documents a simulated SSH authentication investigation in a home SOC lab. Repeated failed SSH login attempts were observed from the same source IP within a short time window. The attempts targeted invalid usernames, which may indicate brute-force or username-guessing activity.
+
+A separate check for successful SSH logins was also performed to determine whether any login attempt was accepted after failed attempts. Successful logins should be reviewed separately to confirm whether they were expected and authorized.
 
 ## Objective
 This case documents a simulated SSH failed-login investigation in a home SOC lab environment using Linux journal logs.
