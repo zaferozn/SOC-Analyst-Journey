@@ -51,7 +51,7 @@ May 10 15:00:29 soclab sshd[23739]: Accepted password for analyst from 192.168.6
 
 ## Analysis
 
-The logs showed `3` failed SSH password entries targeting the invalid username `fakeuser`.
+The logs showed `3` failed SSH login attempts targeting the invalid username `fakeuser`.
 
 The activity came from source IP `192.168.64.1`, which was the host machine in the lab environment.
 
