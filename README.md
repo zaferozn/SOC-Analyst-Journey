@@ -21,10 +21,10 @@ This repository documents my hands-on transition into Security Operations.
 - [Wazuh Environment Validation](labs/week1-day3-wazuh-environment-validation.md)
 - [Alert vs Raw Log Notes](labs/alert-vs-raw-log-notes.md)
 
-## English Analyst Writing
-- [Day 1 English Drill](english-drills/day1-english-drill.md)
-- [Day 2 English Drill](english-drills/day2-english-drill.md)
-- [Day 3 English Drill](english-drills/day3-english-drill.md)
+## Analyst Communication Practice
+- [Basic Analyst Sentence Patterns](english-drills/basic-analyst-sentence-patterns.md)
+- [SSH Log Summary Practice](english-drills/ssh-log-summary-practice.md)
+- [Failed-to-Successful Login Pattern](english-drills/failed-to-successful-login-pattern.md)
 - [Case 001 Defense Drill](english-drills/case-001-defense-drill.md)
 
 ## TryHackMe Notes
