@@ -19,6 +19,7 @@ This repository documents my hands-on transition into Security Operations.
 - [Lab 002 - Fresh SSH Authentication Baseline](labs/lab-002-fresh-ssh-authentication-baseline.md)
 - [Lab 003 - Authentication Triage Scenarios](labs/lab-003-authentication-triage-scenarios.md)
 - [Lab 004 - Wazuh Environment Validation](labs/lab-004-wazuh-environment-validation.md)
+- [Lab 005 - Raw Log to Alert Logic Bridge](labs/lab-005-raw-log-to-alert-logic-bridge.md)
 
 ## Supporting Notes
 - [Linux Foundation Notes](labs/linux-foundation-notes.md)
