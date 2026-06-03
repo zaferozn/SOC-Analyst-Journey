@@ -27,6 +27,7 @@ This repository documents my hands-on transition into Security Operations.
 - [SSH Log Summary Practice](english-drills/ssh-log-summary-practice.md)
 - [Failed-to-Successful Login Pattern](english-drills/failed-to-successful-login-pattern.md)
 - [Case 001 Defense Drill](english-drills/case-001-defense-drill.md)
+- [Case 001 Defense Drill](english-drills/case-001-defense-drill.md)
 
 ## TryHackMe Notes
 - [TryHackMe Notes](tryhackme-notes/)
