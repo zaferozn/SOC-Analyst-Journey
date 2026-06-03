@@ -15,13 +15,15 @@ This repository documents my hands-on transition into Security Operations.
 - [Case 002 - Failed-to-Successful SSH Login Review](cases/case-002-failed-to-successful-ssh-login-review.md)
   
 ## Lab Notes
-- [Foundation Notes](labs/week1-day1-notes.md)
-- [Lab 001 - SSH Log Observation](labs/week1-day2-ssh-log-observation.md)
+- [Lab 001 - SSH Log Observation](labs/lab-001-ssh-log-observation.md)
 - [Lab 002 - Fresh SSH Authentication Baseline](labs/lab-002-fresh-ssh-authentication-baseline.md)
 - [Lab 003 - Authentication Triage Scenarios](labs/lab-003-authentication-triage-scenarios.md)
-- [Wazuh Environment Validation](labs/week1-day3-wazuh-environment-validation.md)
-- [Alert vs Raw Log Notes](labs/alert-vs-raw-log-notes.md)
+- [Lab 004 - Wazuh Environment Validation](labs/lab-004-wazuh-environment-validation.md)
 
+## Supporting Notes
+- [Linux Foundation Notes](labs/linux-foundation-notes.md)
+- [Alert vs Raw Log Notes](labs/alert-vs-raw-log-notes.md)
+  
 ## Analyst Communication Practice
 - [Basic Analyst Sentence Patterns](english-drills/basic-analyst-sentence-patterns.md)
 - [SSH Log Summary Practice](english-drills/ssh-log-summary-practice.md)
