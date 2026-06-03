@@ -1,98 +1,92 @@
-# Case 002 - Failed-to-Successful SSH Login English Drill
+# Case 002 - Defense Drill
 
-## Core SOC Sentences
+## Objective
 
-Three failed SSH login attempts were observed before a successful login.
+This drill supports English writing and speaking practice for explaining Case 002 in a SOC analyst interview context.
 
-The same source IP address was involved in both failed and successful authentication events.
+The goal is to describe the failed-to-successful SSH login investigation using short, clear, and controlled analyst sentences.
 
-The activity involved the user account `analyst`.
+## Core Sentence Pattern
 
-A session was opened after the successful SSH authentication.
+```text
+I worked on...
+I reviewed...
+The logs showed...
+This pattern may indicate...
+The next step is...
+```
+
+## Model Answer
+
+```text
+I worked on an SSH authentication investigation.
+
+I reviewed Linux journal logs.
+
+The logs showed three failed SSH login attempts followed by one successful SSH login.
+
+The same source IP was involved in both failed and successful authentication events.
 
 This pattern may indicate normal user error or possible credential compromise.
 
-Further review is required to confirm whether the login was authorized.
+The next step is to verify whether the successful login was expected and authorized.
+```
 
-The source IP address should be checked against expected user activity.
+## Key Analyst Phrases
 
-Post-login activity should be reviewed to identify any unusual commands or privilege escalation.
+- SSH authentication investigation
+- Linux journal logs
+- failed SSH login attempts
+- successful SSH login
+- same source IP
+- same user account
+- failed-to-successful login pattern
+- possible credential compromise
+- expected and authorized
+- session opened
+- session closed
+- reviewed further
+- next step
 
-The event should be escalated if the user does not recognize the successful login.
+## Notes
 
-## Analyst Summary
+The answer should stay short and controlled.
 
-The authentication logs showed three failed SSH login attempts followed by one successful login from the same source IP address. The activity involved the same user account and occurred within a short time window. Although this was expected in the lab environment, the same pattern in a real SOC environment would require further investigation.
+The investigation should not be described as a Wazuh alert investigation because Wazuh was not installed on the current VM during this phase.
 
-## SOC Report Version
+The safest analyst language is:
 
-Three failed SSH login attempts were observed for the user `analyst` from the source IP address `192.168.64.1`. Shortly after these failed attempts, a successful SSH login was observed from the same source IP address. A session was opened and later closed. This pattern may indicate normal user error, but it may also suggest possible credential compromise if the login was not expected or authorized.
+```text
+This pattern may indicate...
+The activity should be reviewed...
+The next step is to verify whether...
+```
 
-## Interview Answer
+Case 002 is different from Case 001 because this case does not only review failed login attempts.
 
-In this lab, I simulated failed SSH login attempts followed by a successful login. I used `journalctl` to review Linux authentication logs and identified the source IP address, username, failed login count, successful login event, and session activity. The key lesson was that failed login events should not be reviewed alone. A successful login after multiple failed attempts is more important because it may indicate possible credential compromise.
+Case 001 focused on repeated failed SSH login attempts.
 
-## Stronger Interview Version
+Case 002 focuses on failed SSH login attempts followed by a successful SSH login.
 
-I completed a Linux SSH authentication triage lab focused on a failed-to-successful login pattern. I generated three failed SSH login attempts and then performed a successful login from the same source IP address. After that, I reviewed the authentication logs with `journalctl`, correlated the source IP, username, timestamps, authentication results, and session activity. This helped me understand how SOC analysts move from simple log filtering to event correlation and escalation decision-making.
+The key SOC point is correlation:
 
-## CV Bullet
+```text
+Failed attempts alone may indicate attempted access.
+Failed attempts followed by successful authentication may indicate possible access achieved.
+```
 
-Performed SSH authentication log triage by correlating failed login attempts, successful logins, source IP addresses, usernames, and session activity in a Linux lab environment.
+## Final Interview Version
 
-## Improved CV Bullet
+```text
+I worked on an SSH authentication investigation in my home SOC lab.
 
-Investigated failed-to-successful SSH login patterns using Linux journal logs to assess possible credential compromise and document escalation criteria.
+I reviewed Linux journal logs and identified three failed SSH login attempts followed by one successful SSH login.
 
-## Key Vocabulary
+The activity involved the same user account, analyst, and the same source IP address, 192.168.64.1.
 
-failed login attempt  
-successful authentication  
-source IP address  
-user account  
-session opened  
-session closed  
-credential compromise  
-authorized login  
-post-login activity  
-privilege escalation  
-escalation criteria  
-authentication pattern  
-event correlation  
-log triage  
-expected behavior  
-suspicious activity  
+This pattern may indicate normal user error, but it may also suggest possible credential compromise if the login was not expected.
 
-## Mini Drill
+I also checked session activity and confirmed that an SSH session was opened and later closed.
 
-Question: What was observed?
-
-Answer: Three failed SSH login attempts were followed by one successful SSH login.
-
-Question: Where was it observed?
-
-Answer: The activity was observed in Linux journal logs on the host `soclab`.
-
-Question: Which user and source IP were involved?
-
-Answer: The activity involved the user `analyst` and the source IP address `192.168.64.1`.
-
-Question: Why is it suspicious?
-
-Answer: It is suspicious because failed login attempts followed by a successful login may indicate possible credential compromise.
-
-Question: What evidence supports it?
-
-Answer: The logs showed three failed password events, one accepted password event, and one SSH session opened event.
-
-Question: What should be done next?
-
-Answer: The source IP, user activity, login time, and post-login behavior should be reviewed.
-
-Question: Should it be escalated?
-
-Answer: It should be escalated if the login was not expected, if the user does not recognize it, or if suspicious post-login activity is identified.
-
-## Final Practice Paragraph
-
-The logs showed three failed SSH login attempts followed by one successful login for the user `analyst`. The same source IP address, `192.168.64.1`, was involved in both failed and successful authentication events. A session was opened after the successful login and later closed. In this lab environment, the activity was expected. However, in a real SOC environment, this pattern would require further investigation because it may indicate possible credential compromise.
+The next step is to verify whether the successful login was expected and authorized.
+```
