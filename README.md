@@ -35,4 +35,4 @@ This repository documents my hands-on transition into Security Operations.
 The current lab uses an Ubuntu Linux VM as an SSH target system. The current phase focuses on Linux authentication log analysis. Wazuh integration is planned as a later extension.
 
 ## Current Status
-Week 1 foundation is in progress. Case 001 has been developed from SSH failed login pattern analysis using Linux journal logs.
+Week 1 foundation is in progress. Case 001 has been developed from SSH failed login pattern analysis using Linux journal logs. Case 002 has been added to document failed SSH login attempts followed by a successful SSH login from the same source IP address.
