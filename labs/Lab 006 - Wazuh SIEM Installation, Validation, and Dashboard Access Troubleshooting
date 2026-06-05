@@ -288,4 +288,74 @@ Dashboard access was confirmed through the browser using the correct server IP a
 No endpoint agents were registered at the time of validation.
 
 The next step is to deploy a Wazuh agent on a separate Linux endpoint.
+## Resource Adjustment and Stability Note
 
+During the Wazuh validation phase, the host machine showed increased heat under the initial virtual machine resource allocation. To keep the local SOC lab environment stable, the Wazuh VM resources were reduced.
+
+Updated VM resources:
+
+- CPU: 2 cores
+- RAM: 6 GB
+- Disk: unchanged
+- Deployment type: Wazuh all-in-one lab environment
+
+After the adjustment, the system was revalidated to confirm that the core Wazuh services remained operational.
+
+### Memory Validation
+
+Command used:
+
+    free -h
+
+Observed result:
+
+    Mem:   5.8Gi total, 2.2Gi used, 3.5Gi available
+    Swap:  4.0Gi total, 0B used
+
+No swap usage was observed, and the system still had sufficient available memory for lab-based Wazuh usage.
+
+### Service Validation
+
+Commands used:
+
+    sudo systemctl status wazuh-manager --no-pager
+    sudo systemctl status wazuh-indexer --no-pager
+    sudo systemctl status wazuh-dashboard --no-pager
+
+Observed result:
+
+    wazuh-manager: active (running)
+    wazuh-indexer: active (running)
+    wazuh-dashboard: active (running)
+
+All core Wazuh services remained active after the resource adjustment.
+
+### Listening Port Validation
+
+Command used:
+
+    sudo ss -tulpn | grep -E "1514|1515|55000|9200|443"
+
+Observed result:
+
+    443    wazuh-dashboard
+    1514   wazuh-remoted
+    1515   wazuh-authd
+    55000  Wazuh API
+    9200   wazuh-indexer
+
+The expected Wazuh services were listening on the required ports.
+
+### Analyst Note
+
+After reducing the VM resources to 2 CPU cores and 6 GB RAM, the host machine temperature decreased noticeably. The Wazuh server still generated moderate heat during startup, but the environment remained stable, the core services were running, and no swap usage was observed.
+
+This adjustment reflects a realistic lab constraint: balancing SIEM functionality with local hardware limitations while preserving a stable environment for dashboard access, agent enrollment, service validation, and basic alert triage.
+
+### SOC Summary
+
+The Wazuh VM resource allocation was reduced to improve host stability while maintaining the core SIEM functionality required for lab-based security monitoring. After the adjustment, memory usage, swap usage, service status, and listening ports were validated. The Wazuh manager, indexer, dashboard, API, and agent enrollment services remained operational.
+
+### SOC English Sentence
+
+The Wazuh VM resource allocation was reduced to maintain host stability while preserving the core SIEM functionality required for lab-based alert triage.
