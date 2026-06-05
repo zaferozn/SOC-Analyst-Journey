@@ -289,10 +289,3 @@ No endpoint agents were registered at the time of validation.
 
 The next step is to deploy a Wazuh agent on a separate Linux endpoint.
 
-## CV Bullet
-
-Installed and validated a dedicated Wazuh all-in-one SIEM lab environment on Ubuntu Server, including LVM storage expansion, installer troubleshooting, service validation, port verification, dashboard access troubleshooting, and secure credential handling.
-
-## Interview Explanation
-
-I installed Wazuh as a dedicated all-in-one SIEM server in a local UTM lab. Before installation, I validated CPU, memory, disk, and architecture. I also identified that the root filesystem was not using the full LVM space, so I extended it before deployment. During installation, I encountered invalid installer downloads and resolved them by validating the installer file type and using a version-specific Wazuh installer. After installation, I verified the manager, indexer, and dashboard services, checked listening ports, and confirmed dashboard access through the browser. This lab helped me practice not only installation, but also deployment validation and basic troubleshooting.
