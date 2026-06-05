@@ -1,0 +1,298 @@
+# Lab 006 - Wazuh SIEM Installation, Validation, and Dashboard Access Troubleshooting
+
+## Executive Summary
+
+This lab documents the installation and validation of a dedicated Wazuh SIEM server in a local UTM lab environment. The Wazuh server was installed on Ubuntu Server 24.04.4 ARM64 with sufficient CPU, memory, and storage resources. After installation, the Wazuh manager, indexer, and dashboard services were validated, listening ports were checked, and dashboard access was confirmed through the browser.
+
+This lab was not only a basic installation exercise. It also included deployment validation, LVM storage expansion, installer troubleshooting, service verification, port validation, dashboard access troubleshooting, and secure credential handling.
+
+## Objective
+
+The objective of this lab was to deploy a dedicated Wazuh all-in-one SIEM server and validate that the core Wazuh components were running correctly before moving into agent deployment and alert triage.
+
+## Environment / Data Source
+
+Host: wazuh-server  
+Platform: Ubuntu Server 24.04.4 LTS ARM64  
+Virtualization: UTM on Apple Silicon  
+Tool: Wazuh  
+Deployment type: All-in-one installation  
+Log source: Wazuh installation logs and Linux service status  
+
+## Lab Architecture
+
+wazuh-server  → Wazuh manager, Wazuh indexer, Wazuh dashboard  
+soclab        → Future monitored Linux endpoint / Wazuh agent host
+
+The Wazuh server was prepared as a dedicated SIEM host. The existing Linux lab VM will be retained as a separate monitored endpoint for future SSH authentication log collection.
+
+## Pre-Installation Validation
+
+Before installing Wazuh, the server resources were validated.
+
+Commands used:
+
+hostname  
+uname -r  
+free -h  
+df -h  
+nproc  
+
+Validated environment:
+
+Hostname: wazuh-server  
+Kernel: 6.8.0-124-generic  
+Memory: 7.7 GiB  
+Root filesystem: 51 GB  
+Available disk space: 42 GB  
+CPU cores: 4  
+Architecture: aarch64  
+
+The environment met the lab baseline for a Wazuh all-in-one deployment.
+
+## LVM Expansion
+
+During post-installation validation, the virtual disk was 55 GB, but the root filesystem initially used only about 26 GB. The unused LVM free space was identified and allocated to the root logical volume before installing Wazuh.
+
+Commands used:
+
+lsblk  
+sudo vgs  
+sudo lvs  
+sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv  
+sudo resize2fs /dev/ubuntu-vg/ubuntu-lv  
+df -h  
+
+Observed state before expansion:
+
+Physical disk: 55G  
+Volume group: 51.95G  
+Root logical volume: 25.97G  
+Free LVM space: 25.97G  
+
+Observed state after expansion:
+
+Root filesystem: 51G  
+Available space: 42G  
+Logical volume: <51.95G  
+
+This ensured that the Wazuh server had enough usable disk space before SIEM installation.
+
+## System Update
+
+The server was updated before the Wazuh installation.
+
+Commands used:
+
+sudo apt update && sudo apt upgrade -y  
+sudo reboot  
+
+The system was rebooted after updates to ensure a clean service state before deployment.
+
+## Installer Validation
+
+The first generic Wazuh installer URL returned an XML AccessDenied response instead of a Bash script.
+
+Observed invalid installer output:
+
+<?xml version="1.0" encoding="UTF-8"?>  
+<Error><Code>AccessDenied</Code><Message>Access Denied</Message></Error>  
+
+The invalid file was removed, and a version-specific Wazuh installer path was used instead.
+
+Commands used:
+
+rm wazuh-install.sh  
+curl -L -O https://packages.wazuh.com/4.14/wazuh-install.sh  
+head -5 wazuh-install.sh  
+file wazuh-install.sh  
+ls -lh wazuh-install.sh  
+
+Validated installer output:
+
+#!/bin/bash  
+
+# Wazuh installer  
+# Copyright (C) 2015, Wazuh Inc.  
+
+wazuh-install.sh: Bourne-Again shell script, ASCII text executable  
+
+The installer file was confirmed to be a valid Bash script before execution.
+
+## Wazuh Installation
+
+The Wazuh all-in-one installation was started with:
+
+sudo bash ./wazuh-install.sh -a
+
+The installation generated administrator credentials. These credentials were stored locally and were not uploaded to GitHub.
+
+## Credential Handling
+
+Dashboard URL: https://192.168.64.9  
+Username: admin  
+Password: stored locally  
+
+No credentials were uploaded to GitHub.
+
+## Service Validation
+
+After installation, the main Wazuh services were checked.
+
+Commands used:
+
+sudo systemctl status wazuh-manager --no-pager  
+sudo systemctl status wazuh-indexer --no-pager  
+sudo systemctl status wazuh-dashboard --no-pager  
+
+Observed result:
+
+wazuh-manager: active (running)  
+wazuh-indexer: active (running)  
+wazuh-dashboard: active (running)  
+
+This confirmed that the central Wazuh components were running after installation.
+
+## Port Validation
+
+Listening ports were checked with:
+
+sudo ss -tulpen | grep -E "443|5601|9200|1514|1515|55000"
+
+Observed result:
+
+443   → Wazuh dashboard  
+1514  → Agent communication  
+1515  → Agent enrollment  
+55000 → Wazuh API  
+9200  → Wazuh indexer on localhost  
+
+The Wazuh dashboard service was active and listening on HTTPS port 443.
+
+## Dashboard Access Troubleshooting
+
+The dashboard initially did not open in the browser. Service and port validation confirmed that Wazuh was running correctly, so browser access and IP usage were checked.
+
+The incorrect IP address was entered first:
+
+https://192.168.4.9
+
+The correct IP address was identified from the VM network interface:
+
+192.168.64.9
+
+Correct dashboard URL:
+
+https://192.168.64.9
+
+After using the correct IP address, the Wazuh dashboard was successfully accessed through the browser.
+
+## Observed Activity
+
+Wazuh was installed as a dedicated all-in-one SIEM server. The Wazuh manager, indexer, and dashboard services were active after installation. The dashboard was reachable over HTTPS from the host browser.
+
+At the time of validation, no agents were registered.
+
+## Evidence
+
+Evidence collected:
+
+Hostname: wazuh-server  
+IP address: 192.168.64.9  
+Wazuh manager: active/running  
+Wazuh indexer: active/running  
+Wazuh dashboard: active/running  
+Dashboard port: 443/listening  
+Dashboard access: successful  
+Agents registered: 0  
+
+Dashboard observation:
+
+This instance has no agents registered.  
+Please deploy agents to begin monitoring your endpoints.
+
+Dashboard alert summary at the time of validation:
+
+Critical severity: 0  
+High severity: 0  
+Medium severity: 124  
+Low severity: 189  
+
+## Analysis
+
+The Wazuh installation was successful. The core services were running, port 443 was listening, and the dashboard was accessible from the browser. The absence of registered agents is expected because no endpoint agent has been deployed yet.
+
+The main troubleshooting steps involved validating system resources, expanding LVM storage, confirming installer integrity, checking service status, validating listening ports, and correcting the browser IP address.
+
+The next logical step is to install a Wazuh agent on a separate Linux endpoint and begin collecting SSH authentication logs.
+
+## Risk
+
+No security incident was investigated in this lab.
+
+The main operational risks identified during setup were:
+
+- Insufficient disk allocation before LVM expansion
+- Invalid installer download from a generic URL
+- Browser access failure caused by incorrect IP entry
+- Credential exposure risk if passwords are uploaded publicly
+
+These risks were handled before moving into alert triage.
+
+## Recommended Next Steps
+
+1. Install the Wazuh agent on the soclab Linux endpoint.
+2. Register the agent with the Wazuh server.
+3. Confirm that the agent appears in the Wazuh dashboard.
+4. Generate SSH failed login events.
+5. Compare raw Linux authentication logs with Wazuh alerts.
+6. Document Wazuh alert fields.
+7. Create a Wazuh SSH brute-force alert triage case.
+
+## MITRE ATT&CK Mapping
+
+Not applicable for this installation lab.
+
+This lab focused on SIEM deployment and validation, not adversary behavior.
+
+## Final SOC Summary
+
+Wazuh was successfully installed and validated as a dedicated all-in-one SIEM server in a local UTM lab environment. The Wazuh manager, indexer, and dashboard services were confirmed as active and running. Port validation confirmed that the dashboard was listening on HTTPS port 443, and browser access was successfully established using the correct server IP address. No endpoint agents were registered at this stage, so the next step is agent deployment and authentication log collection.
+
+## Lessons Learned
+
+- Validate VM resources before installing SIEM tools.
+- Check disk allocation carefully when using LVM.
+- Confirm installer integrity before execution.
+- Do not force outdated installers on unsupported systems.
+- Validate services, ports, IP configuration, and browser access separately.
+- Store credentials locally and never upload them to GitHub.
+- A realistic SOC lab should separate the SIEM server and monitored endpoint.
+
+## SOC English Sentences
+
+The Wazuh server was installed successfully as an all-in-one SIEM deployment.
+
+The server resources were validated before installation.
+
+Unused LVM space was identified and allocated to the root filesystem before deployment.
+
+The installer file was validated before execution to avoid running an invalid script.
+
+The Wazuh manager, indexer, and dashboard services were confirmed as active and running.
+
+Port validation confirmed that the dashboard was listening on HTTPS port 443.
+
+Dashboard access was confirmed through the browser using the correct server IP address.
+
+No endpoint agents were registered at the time of validation.
+
+The next step is to deploy a Wazuh agent on a separate Linux endpoint.
+
+## CV Bullet
+
+Installed and validated a dedicated Wazuh all-in-one SIEM lab environment on Ubuntu Server, including LVM storage expansion, installer troubleshooting, service validation, port verification, dashboard access troubleshooting, and secure credential handling.
+
+## Interview Explanation
+
+I installed Wazuh as a dedicated all-in-one SIEM server in a local UTM lab. Before installation, I validated CPU, memory, disk, and architecture. I also identified that the root filesystem was not using the full LVM space, so I extended it before deployment. During installation, I encountered invalid installer downloads and resolved them by validating the installer file type and using a version-specific Wazuh installer. After installation, I verified the manager, indexer, and dashboard services, checked listening ports, and confirmed dashboard access through the browser. This lab helped me practice not only installation, but also deployment validation and basic troubleshooting.
