@@ -20,7 +20,9 @@ This repository documents my hands-on transition into Security Operations.
 - [Lab 003 - Authentication Triage Scenarios](labs/lab-003-authentication-triage-scenarios.md)
 - [Lab 004 - Wazuh Environment Validation](labs/lab-004-wazuh-environment-validation.md)
 - [Lab 005 - Raw Log to Alert Logic Bridge](labs/lab-005-raw-log-to-alert-logic-bridge.md)
-
+- [Lab 006 - Wazuh SIEM Installation, Validation, and Dashboard Access Troubleshooting](labs/lab-006-wazuh-siem-installation-validation-and-dashboard-access-troubleshooting.md)
+- [Lab 007 - Wazuh Agent Enrollment and First Event Validation](labs/lab-007-wazuh-agent-enrollment-and-first-event-validation.md)
+  
 ## Supporting Notes
 - [Linux Foundation Notes](labs/linux-foundation-notes.md)
 - [Alert vs Raw Log Notes](labs/alert-vs-raw-log-notes.md)
@@ -36,7 +38,8 @@ This repository documents my hands-on transition into Security Operations.
 - [TryHackMe Notes](tryhackme-notes/)
 
 ## Current Lab Status
-The current lab uses an Ubuntu Linux VM as an SSH target system. The current phase focuses on Linux authentication log analysis. Wazuh integration is planned as a later extension.
+The current lab environment includes a dedicated Wazuh SIEM server and a monitored Ubuntu endpoint. The current phase focuses on Wazuh agent validation, endpoint event ingestion, SSH authentication alert visibility, and SIEM-based triage practice.
 
 ## Current Status
-Week 1 foundation is in progress. Case 001 has been developed from SSH failed login pattern analysis using Linux journal logs. Case 002 has been added to document failed SSH login attempts followed by a successful SSH login from the same source IP address.
+The Linux authentication log analysis foundation has been completed through Case 001 and Case 002. These cases document SSH failed login analysis and failed-to-successful SSH login correlation using raw Linux journal logs.
+The current phase focuses on Wazuh SIEM practice, including Wazuh server deployment, dashboard validation, Ubuntu agent enrollment, endpoint event ingestion, and SSH authentication alert analysis.
