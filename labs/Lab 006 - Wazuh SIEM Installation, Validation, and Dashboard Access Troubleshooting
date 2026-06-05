@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This lab documents the installation and validation of a dedicated Wazuh SIEM server in a local UTM lab environment. The Wazuh server was installed on Ubuntu Server 24.04.4 ARM64 with sufficient CPU, memory, and storage resources. After installation, the Wazuh manager, indexer, and dashboard services were validated, listening ports were checked, and dashboard access was confirmed through the browser.
+This lab documents the installation and validation of a dedicated Wazuh SIEM server in a local UTM lab environment. The Wazuh server was installed on Ubuntu Server 24.04.4 ARM64, and the VM resources were later adjusted to maintain local lab stability. After installation, the Wazuh manager, indexer, and dashboard services were validated, listening ports were checked, and dashboard access was confirmed through the browser.
 
 This lab was not only a basic installation exercise. It also included deployment validation, LVM storage expansion, installer troubleshooting, service verification, port validation, dashboard access troubleshooting, and secure credential handling.
 
@@ -336,6 +336,7 @@ Wazuh was successfully installed and validated as a dedicated all-in-one SIEM se
 - Validate services, ports, IP configuration, and browser access separately.
 - Store credentials locally and never upload them to GitHub.
 - A realistic SOC lab should separate the SIEM server and monitored endpoint.
+- VM resource allocation may need to be adjusted to balance SIEM functionality with host machine stability.
 
 ## SOC English Sentences
 
