@@ -22,6 +22,7 @@ This repository documents my hands-on transition into Security Operations.
 - [Lab 005 - Raw Log to Alert Logic Bridge](labs/lab-005-raw-log-to-alert-logic-bridge.md)
 - [Lab 006 - Wazuh SIEM Installation, Validation, and Dashboard Access Troubleshooting](labs/lab-006-wazuh-siem-installation-validation-and-dashboard-access-troubleshooting.md)
 - [Lab 007 - Wazuh Agent Enrollment and First Event Validation](labs/lab-007-wazuh-agent-enrollment-and-first-event-validation.md)
+- [Lab 008 - Wazuh Authentication Event Review and First Alert Triage](labs/lab-008-wazuh-authentication-event-review-and-first-alert-triage.md)
   
 ## Supporting Notes
 - [Linux Foundation Notes](labs/linux-foundation-notes.md)
