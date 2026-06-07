@@ -23,6 +23,7 @@ This repository documents my hands-on transition into Security Operations.
 - [Lab 006 - Wazuh SIEM Installation, Validation, and Dashboard Access Troubleshooting](labs/lab-006-wazuh-siem-installation-validation-and-dashboard-access-troubleshooting.md)
 - [Lab 007 - Wazuh Agent Enrollment and First Event Validation](labs/lab-007-wazuh-agent-enrollment-and-first-event-validation.md)
 - [Lab 008 - Wazuh Authentication Event Review and First Alert Triage](labs/lab-008-wazuh-authentication-event-review-and-first-alert-triage.md)
+- [Lab 009 - Wazuh Alert Field Extraction and Raw Log Comparison](labs/lab-009-wazuh-alert-field-extraction-and-raw-log-comparison.md)
   
 ## Supporting Notes
 - [Linux Foundation Notes](labs/linux-foundation-notes.md)
