@@ -33,7 +33,7 @@ Host: ubuntu-agent
 Tool: Wazuh  
 Log source: Linux authentication logs / Wazuh alerts  
 SIEM index: wazuh-alerts-*  
-Time window: ADD YOUR WAZUH TIME WINDOW HERE  
+Time window: Selected Wazuh investigation time window 
 Agent name: ubuntu-agent  
 Agent IP: 192.168.64.10  
 Wazuh manager: wazuh-server  
