@@ -13,6 +13,7 @@ This repository documents my hands-on transition into Security Operations.
 ## Portfolio Cases
 - [Case 001 - SSH Failed Login Pattern Investigation](cases/case-001-ssh-failed-login-pattern-investigation.md)
 - [Case 002 - Failed-to-Successful SSH Login Review](cases/case-002-failed-to-successful-ssh-login-review.md)
+- [Case 003 - Wazuh SSH Brute-Force Investigation](cases/case-003-wazuh-ssh-brute-force-investigation.md)
   
 ## Lab Notes
 - [Lab 001 - SSH Log Observation](labs/lab-001-ssh-log-observation.md)
