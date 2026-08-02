@@ -1,6 +1,3 @@
-Copy everything below and paste it into your **Lab 012 Markdown file**:
-
-````markdown
 # Lab 012 - Wazuh SSH False-Positive Review and Alert Disposition
 
 ## Executive Summary
