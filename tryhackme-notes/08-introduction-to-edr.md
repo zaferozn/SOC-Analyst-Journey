@@ -343,3 +343,5 @@ EDR does not replace SIEM or network monitoring. Its main value is providing det
 - Alerts must be validated before escalation.
 - EDR can isolate hosts, terminate processes, quarantine files, and collect artefacts.
 - EDR and SIEM work together in a larger security environment.
+
+> These notes are my own summary of concepts studied through TryHackMe. They do not reproduce the original room content or materials.
