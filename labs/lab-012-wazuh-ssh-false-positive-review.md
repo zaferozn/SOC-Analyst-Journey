@@ -118,7 +118,7 @@ MITRE ATT&CK tactic: Credential Access
 
 The alert indicated that the same user had entered an incorrect password multiple times within a short period.
 
-<!-- Screenshot will be inserted here after upload. -->
+![Wazuh Rule 2502 repeated authentication failures](../screenshots/lab-012/01-wazuh-rule-2502-repeated-authentication-failures.png)
 
 ### Evidence 2 - Individual Authentication-Failure Events
 
@@ -162,7 +162,7 @@ Rule level: 3
 Rule description: PAM: Login session opened
 ```
 
-<!-- Screenshot will be inserted here after upload. -->
+![Wazuh Rule 5715 successful SSH authentication](../screenshots/lab-012/02-wazuh-rule-5715-successful-ssh-authentication.png)
 
 ### Evidence 4 - Raw Log Validation
 
@@ -185,7 +185,7 @@ Aug 01 19:22:29 ubuntu-agent sshd[113363]: Accepted password for analyst from 19
 
 The raw endpoint logs confirmed three failed password attempts followed by a successful authentication from the same source IP address and against the same user account.
 
-<!-- Screenshot will be inserted here after upload. -->
+![Ubuntu raw SSH authentication logs](../screenshots/lab-012/03-ubuntu-raw-ssh-authentication-log.png)
 
 ## Event Timeline
 
