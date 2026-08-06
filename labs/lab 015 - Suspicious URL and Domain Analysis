@@ -1,0 +1,112 @@
+# Lab 015 - Suspicious URL and Domain Analysis
+
+## Executive Summary
+
+This lab documents the analysis of a suspicious URL extracted during a phishing investigation. The investigation focused on domain information, DNS records, hosting infrastructure, URL behavior, and redirect activity.
+
+The analysis identified the destination domain, associated IP address, hosting provider, and HTTP redirect chain to understand the infrastructure behind the suspicious link.
+
+## Objective
+
+The objective of this lab was to perform basic URL investigation techniques used during phishing triage:
+
+- Identify domain and IP information
+- Analyze DNS and reverse DNS records
+- Investigate hosting infrastructure
+- Review URLScan results
+- Examine redirect behavior
+- Determine potential risk indicators
+
+## Environment / Data Source
+
+Tool:
+- VirusTotal
+- URLScan.io
+- DNS lookup tools
+- Reverse DNS lookup tools
+
+Investigation Type:
+- Suspicious URL analysis
+
+Source:
+- URL extracted from phishing email analysis
+
+## Observed Activity
+
+The suspicious URL was analyzed to identify its associated infrastructure and web behavior.
+
+The investigation revealed:
+
+- The domain resolved to IP address 83.167.244.201
+- The IP address was hosted by MasterDC s.r.o. (AS24971)
+- The infrastructure was located in Czech Republic
+- URLScan identified multiple HTTP transactions and contacted external resources
+- The URL followed multiple HTTP redirects before reaching the final destination
+
+## Evidence
+
+### Domain DNS Analysis
+
+DNS information was collected to identify the relationship between the domain and its associated infrastructure.
+
+![Domain DNS Results](screenshots/01-domain-dns-results.png)
+
+
+### Reverse DNS Analysis
+
+Reverse DNS analysis was performed to identify possible hostnames associated with the IP address.
+
+![Reverse DNS Results](screenshots/02-reverse-dns-results.png)
+
+
+### URLScan Analysis
+
+URLScan analysis showed the main IP address, hosting provider, contacted domains, HTTP transactions, and website behavior.
+
+![URLScan Summary](screenshots/01-urlscan-summary.png)
+
+
+### Redirect Chain Analysis
+
+The URL was observed following multiple HTTP redirects before reaching the final destination.
+
+![Redirect Chain](screenshots/02-url-redirect-chain.png)
+
+## Analysis
+
+The analyzed URL contained characteristics commonly observed during phishing investigations, including tracking parameters and redirect behavior.
+
+The infrastructure itself was not classified as malicious by available reputation services at the time of analysis. However, the URL required investigation because it was obtained from a suspicious email context.
+
+## Risk
+
+Potential risks include:
+
+- Redirecting users to malicious content
+- Tracking user interaction
+- Delivering phishing pages
+- Collecting user information through fraudulent websites
+
+Additional investigation would be required if other indicators such as malicious files, credentials harvesting, or suspicious domains are identified.
+
+## Recommended Next Steps
+
+- Block the URL if confirmed malicious
+- Monitor related domains and IP addresses
+- Search SIEM logs for user access attempts
+- Investigate associated indicators of compromise (IOCs)
+- Perform further threat intelligence enrichment
+
+## MITRE ATT&CK Mapping
+
+Relevant Technique:
+
+- T1566.002 - Phishing: Spearphishing Link
+
+## Final SOC Summary
+
+A suspicious URL obtained from a phishing email was investigated through DNS analysis, reverse DNS lookup, URLScan analysis, and redirect examination. The investigation identified the associated infrastructure and observed redirect behavior commonly used in phishing campaigns. Although no direct malicious classification was available, the URL should be treated cautiously due to its phishing context and further monitored for related malicious activity.
+
+## Lessons Learned
+
+This lab improved practical phishing investigation skills by demonstrating how SOC analysts analyze suspicious URLs, enrich indicators, identify infrastructure relationships, and document findings using evidence-based reporting.
