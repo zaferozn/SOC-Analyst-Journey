@@ -1,6 +1,6 @@
 # Lab 015 - Suspicious URL and Domain Analysis
 
-## Executive Summary
+## Executive Summary 
 
 This lab documents the investigation of a suspicious URL extracted during a phishing email analysis. The investigation focused on domain information, DNS records, reverse DNS analysis, hosting infrastructure, URLScan results, and HTTP redirect behavior.
 
