@@ -66,14 +66,14 @@ Reverse DNS lookup was performed to identify possible hostnames and infrastructu
 
 URLScan was used to analyze website behavior, contacted IP addresses, domains, HTTP transactions, and infrastructure information.
 
-![URLScan Summary](../screenshots/lab-015/03-urlscan-summary.png)
+![URLScan Summary](../screenshots/lab-015/01-urlscan-summary.png)
 
 
 ### Redirect Chain Analysis
 
 The URL was observed following multiple HTTP redirects before reaching the final destination.
 
-![Redirect Chain](../screenshots/lab-015/04-url-redirect-chain.png)
+![Redirect Chain](../screenshots/lab-015/02-url-redirect-chain.png)
 
 ## Analysis
 
