@@ -30,7 +30,7 @@ Different URLs were associated with unsubscribe actions, a report-spam action, p
 
 ### Evidence Screenshot
 
-![Embedded URLs and hidden tracking pixel](screenshots/01-email3-url-and-tracking-analysis.png)
+![Embedded URLs and hidden tracking pixel](screenshots/01-url-analysis.png)
 
 The raw HTML source of `email3.eml` showed tokenized links under `t.teckbe.com`, externally hosted images under `img.teckbe.com`, and a zero-size remote image consistent with email-open tracking.
 
