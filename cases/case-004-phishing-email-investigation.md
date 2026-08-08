@@ -87,7 +87,7 @@ However, the embedded tracking and redirect infrastructure required further inve
 
 The raw email source showed consistent `teckbe.com` sender information together with tracking and image-delivery URLs.
 
-![Email Header and URL Evidence](https://raw.githubusercontent.com/zaferozn/SOC-Analyst-Journey/main/screenshots/case-004/01-email-header-and-url-evidence.png))
+![Email Header and URL Evidence](https://raw.githubusercontent.com/zaferozn/SOC-Analyst-Journey/main/screenshots/case-004/01-email-header-and-url-evidence.png)
 
 The sender and Reply-To addresses both used the same domain.
 
