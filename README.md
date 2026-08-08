@@ -10,14 +10,24 @@ This repository documents my hands-on transition into Security Operations.
 - Source IP and username extraction
 - Wazuh SIEM alert review
 - Raw log vs SIEM alert comparison
+- SSH brute-force investigation
+- False positive analysis
+- Email header analysis
+- Phishing email investigation
+- Suspicious URL and domain analysis
+- DNS and reverse DNS investigation
+- IOC enrichment
+- Threat intelligence and reputation checks
 - Incident-style documentation
+- Evidence-based escalation decisions
 - SOC-focused English writing practice
 
 ## Portfolio Cases
 
 - [Case 001 - SSH Failed Login Pattern Investigation](cases/case-001-ssh-failed-login-pattern-investigation.md)
-- [Case 002 - Failed-to-Successful SSH Login Review](cases/case-002-failed-to-successful-login-review.md)
+- [Case 002 - Failed-to-Successful SSH Login Review](cases/case-002-failed-to-successful-ssh-login-review.md)
 - [Case 003 - Wazuh SSH Brute-Force Investigation](cases/case-003-wazuh-ssh-brute-force-investigation.md)
+- [Case 004 - Suspicious Phishing Email Investigation](cases/case-004-phishing-email-investigation.md)
 
 ## Lab Notes
 
@@ -32,6 +42,10 @@ This repository documents my hands-on transition into Security Operations.
 - [Lab 009 - Wazuh Alert Field Extraction and Raw Log Comparison](labs/lab-009-wazuh-alert-field-extraction-and-raw-log-comparison.md)
 - [Lab 010 - Repeated Failed SSH Login Triage from Same Source IP](labs/lab-010-repeated-failed-ssh-login-triage.md)
 - [Lab 011 - Wazuh SSH Brute-Force Alert Deep Triage](labs/lab-011-wazuh-ssh-brute-force-alert-deep-triage.md)
+- [Lab 012 - Wazuh SSH False Positive Review](labs/lab-012-wazuh-ssh-false-positive-review.md)
+- [Lab 013 - Email Structure and Header Analysis](labs/lab-013-Email-Structure-and-Header-Analysis.md)
+- [Lab 014 - Suspicious URL Analysis](labs/lab-014-suspicious-url-analysis.md)
+- [Lab 015 - Suspicious URL and Domain Analysis](labs/lab-015-suspicious%20URL%20and%20domain%20analysis.md)
 
 ## Supporting Notes
 
@@ -56,15 +70,19 @@ The current lab environment includes a dedicated Wazuh SIEM server and a monitor
 
 - Wazuh server: dedicated SIEM server
 - Monitored endpoint: Ubuntu agent
-- Main log source: Linux authentication logs
+- Main endpoint log source: Linux authentication logs
 - SIEM focus: Wazuh authentication alerts, rule fields, alert severity, source IP review, and evidence-based triage
+- Phishing analysis focus: email headers, embedded URLs, domains, DNS records, infrastructure, redirects, and reputation data
+- Investigation tools: Wazuh, Linux command-line tools, VirusTotal, URLScan.io, DNS lookup, and reverse DNS analysis
 
 ## Current Status
 
-The Linux authentication log analysis foundation has been completed through Case 001 and Case 002. These cases document SSH failed login analysis and failed-to-successful SSH login correlation using raw Linux journal logs.
+The Linux authentication investigation foundation has been developed through repeated failed SSH login analysis, failed-to-successful authentication correlation, Wazuh alert review, raw log comparison, brute-force triage, and false positive analysis.
 
-The Wazuh SIEM phase has also started and now includes Wazuh server deployment, dashboard validation, Ubuntu agent enrollment, endpoint event ingestion, authentication event review, raw log vs SIEM alert comparison, and SSH brute-force alert triage.
+Cases 001–003 document progressively more advanced authentication investigations, moving from raw Linux log analysis to SIEM-assisted SSH brute-force triage and evidence-based escalation decisions.
 
-Case 003 documents a Wazuh-based SSH brute-force investigation. It connects the earlier raw Linux log analysis foundation with SIEM alert triage by reviewing repeated failed SSH activity, Wazuh rule details, source IP evidence, affected usernames, risk, recommended next steps, and escalation decision.
+The portfolio has now expanded into phishing investigation and basic threat intelligence workflows. Labs 013–015 cover email structure and header analysis, suspicious URL investigation, DNS and reverse DNS analysis, hosting infrastructure review, redirect analysis, and reputation checking using external threat intelligence sources.
 
-The current portfolio direction is focused on practical SOC Analyst skills: Linux log analysis, Wazuh alert triage, SSH brute-force investigation, incident documentation, evidence collection, and professional analyst communication.
+Case 004 combines these skills into an end-to-end suspicious phishing email investigation. The case evaluates email metadata, embedded URLs, associated domains and infrastructure, redirect behavior, and reputation evidence before reaching a final disposition of Suspicious / Unconfirmed.
+
+The current portfolio direction is focused on practical SOC Analyst work: Linux log analysis, Wazuh SIEM alert triage, authentication investigation, false positive review, phishing analysis, IOC enrichment, threat intelligence support, evidence collection, incident documentation, escalation decisions, and professional analyst communication.
