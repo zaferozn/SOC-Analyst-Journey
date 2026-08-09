@@ -46,6 +46,7 @@ This repository documents my hands-on transition into Security Operations.
 - [Lab 013 - Email Structure and Header Analysis](labs/lab-013-Email-Structure-and-Header-Analysis.md)
 - [Lab 014 - Suspicious URL Analysis](labs/lab-014-suspicious-url-analysis.md)
 - [Lab 015 - Suspicious URL and Domain Analysis](labs/lab-015-suspicious%20URL%20and%20domain%20analysis.md)
+- [Lab 016 - False Positive Review and Alert Disposition](labs/lab-016-false-positive-review-and-alert-disposition.md)
 
 ## Supporting Notes
 
